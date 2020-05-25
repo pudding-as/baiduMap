@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.baidu.location.BDLocation;
@@ -15,12 +14,9 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
-import com.baidu.mapapi.map.BitmapDescriptor;
-import com.baidu.mapapi.map.BitmapDescriptorFactory;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
-import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.model.LatLng;
 
 public class MainActivity extends AppCompatActivity {
@@ -65,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mapView = findViewById(R.id.bmapView);
         baiduMap = mapView.getMap();
+        baiduMap.setMapType(BaiduMap.MAP_TYPE_SATELLITE);
         tv_Lat = findViewById(R.id.tv_Lat);
         tv_Lon = findViewById(R.id.tv_Lon);
         LocationClientOption option = new LocationClientOption();
@@ -72,8 +69,6 @@ public class MainActivity extends AppCompatActivity {
         option.setScanSpan(1000);
         //设置定位模式
         option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);
-        //设置需要地址信息
-        option.setIsNeedAddress(true);
         //保存定位参数
         mLocationClient.setLocOption(option);
     }
