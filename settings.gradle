@@ -1,0 +1,2 @@
+rootProject.name='baiduMapTest'
+include ':app'
